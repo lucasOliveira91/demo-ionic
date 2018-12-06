@@ -1,7 +1,6 @@
 import { Observable } from 'rxjs/Rx';
 import { Injectable } from '@angular/core';
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HTTP_INTERCEPTORS } from "@angular/common/http";
-import { ERR_PLUGIN_NOT_INSTALLED } from '@ionic-native/core';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
