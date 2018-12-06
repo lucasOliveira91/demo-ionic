@@ -1,3 +1,5 @@
+import { AuthService } from './../../services/auth.service';
+import { CredentialsDTO } from './../../models/credentials.dto';
 import { Component } from '@angular/core';
 import { NavController, IonicPage, MenuController } from 'ionic-angular';
 
@@ -8,9 +10,12 @@ import { NavController, IonicPage, MenuController } from 'ionic-angular';
 })
 export class HomePage {
 
+  creds: CredentialsDTO = new CredentialsDTO();
+
   constructor(
     public navCtrl: NavController,
-    public menu: MenuController
+    public menu: MenuController,
+    public authService: AuthService
   ) {
 
   }
@@ -24,6 +29,9 @@ export class HomePage {
   }
 
   login() {
-    this.navCtrl.setRoot('CategoriesPage');
+    this.authService.authenticate(this.creds).subscribe(response => {
+      console.log(response.headers.get('Authorization'));
+      this.navCtrl.setRoot('CategoriesPage');
+    }, error => {});
   }
 }

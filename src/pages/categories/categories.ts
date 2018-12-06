@@ -29,7 +29,6 @@ export class CategoriesPage {
     this.categoryService.findall().subscribe(response => {
       this.items = response;
     }, error => {
-      console.log(error);
 
     });
     console.log('');
