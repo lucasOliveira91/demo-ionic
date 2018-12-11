@@ -1,0 +1,19 @@
+<ion-header>
+
+  <ion-navbar>
+    <button io-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>profile</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-avatar>
+    <img class="circle" [src]="custumer?.imageUrl || 'assets/imgs/avatar-blank.png'">
+  </ion-avatar>
+  <h2 text-center>{{custumer?.nome}}</h2>
+  <p text-center>{{custumer?.email}}</p>
+</ion-content>
