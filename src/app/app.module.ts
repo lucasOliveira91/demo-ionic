@@ -1,3 +1,4 @@
+import { AuthInterceptorProvider } from './../interceptors/auth-interceptor';
 import { CustumerService } from './../services/domain/custumer.service';
 import { StorageService } from './../services/storage.service';
 import { AuthService } from './../services/auth.service';
@@ -29,6 +30,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     CategoryService,
     StatusBar,
     SplashScreen,
+    AuthInterceptorProvider,
     ErrorInterceptorProvider,
     AuthService,
     StorageService,

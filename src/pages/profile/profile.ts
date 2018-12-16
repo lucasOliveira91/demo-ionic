@@ -35,7 +35,13 @@ export class ProfilePage {
       this.custumerService.findByEmail(localUser.email).subscribe(response => {
         this.custumer = response
         this.getImageifExists();
-      }, erro => {})
+      }, erro => {
+        if(erro.status == 403) {
+          this.navCtrl.setRoot('HomePage');
+        }
+      })
+    }else {
+      this.navCtrl.setRoot('HomePage');
     }
   }
 
