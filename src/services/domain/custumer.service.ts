@@ -17,4 +17,8 @@ export class CustumerService{
         let url = `${API_CONFIG.bucketBaseUrl}/cp${id}.png`;
         return this.http.get(url, {responseType : 'blob'})
     }
+
+    insert(obj: CustumerDTO) {
+        return this.http.post(`${API_CONFIG.baseUrl}/custumer`, obj, {observe: 'response', responseType: 'text'});
+    }
 }
