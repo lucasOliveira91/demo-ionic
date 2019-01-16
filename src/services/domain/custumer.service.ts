@@ -9,8 +9,8 @@ export class CustumerService{
 
     constructor(public http: HttpClient) {}
 
-    findByEmail(email: string): Observable<CustumerDTO>{
-       return this.http.get<CustumerDTO>(`${API_CONFIG.baseUrl}/custumer/email?value=${email}`);
+    findByEmail(email: string) {
+       return this.http.get(`${API_CONFIG.baseUrl}/custumer/email?value=${email}`);
     }
 
     getImageFromBucket(id: number) : Observable<any> {

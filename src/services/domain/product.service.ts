@@ -11,7 +11,7 @@ export class ProductService {
     constructor(public http: HttpClient) {}
 
     findByCategory (categoryId: string){
-        return this.http.get(`${API_CONFIG.baseUrl}/product/?category=${categoryId}`);
+        return this.http.get(`${API_CONFIG.baseUrl}/products/?categories=${categoryId}`);
     }
 
     getSmallImageFromBucket(id: string): Observable<any> {
@@ -20,7 +20,7 @@ export class ProductService {
     }
 
     findById(id: string) {
-        return this.http.get<ProductDTO>(`${API_CONFIG.baseUrl}/product/${id}`);
+        return this.http.get<ProductDTO>(`${API_CONFIG.baseUrl}/products/${id}`);
     }
 
     getImageFromBucket(id: string): Observable<any> {
