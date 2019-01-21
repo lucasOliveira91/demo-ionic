@@ -9,6 +9,10 @@ export class CustumerService{
 
     constructor(public http: HttpClient) {}
 
+    findById(id: string) {
+        return this.http.get(`${API_CONFIG.baseUrl}/custumer/${id}`);
+     }
+
     findByEmail(email: string) {
        return this.http.get(`${API_CONFIG.baseUrl}/custumer/email?value=${email}`);
     }

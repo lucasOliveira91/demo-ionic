@@ -4,6 +4,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { StorageService } from '../../services/storage.service';
 import { CartService } from '../../services/domain/cart.service';
 import { CustumerService } from '../../services/domain/custumer.service';
+import { OrderDTO } from '../../models/order.dto';
 
 @IonicPage()
 @Component({
@@ -13,6 +14,7 @@ import { CustumerService } from '../../services/domain/custumer.service';
 export class PickAddressPage {
 
   items: AddressDTO[];
+  order: OrderDTO;
 
   // pedido: OrderD;
 
@@ -33,12 +35,12 @@ export class PickAddressPage {
 
           let cart = this.cartService.getCart();
 
-          // this.pedido = {
-          //   cliente: {id: response['id']},
-          //   enderecoDeEntrega: null,
-          //   pagamento: null,
-          //   itens : cart.items.map(x => {return {quantidade: x.quantidade, produto: {id: x.produto.id}}})
-          // }
+           this.order = {
+             custumer: {id: response['id']},
+             deriveryAddress: null,
+             payment: null,
+             items : cart.items.map(x => {return {amount: x.amount, product: {id: x.product.id}}})
+           }
         },
         error => {
           if (error.status == 403) {
@@ -52,7 +54,7 @@ export class PickAddressPage {
   }
 
   nextPage(item: AddressDTO) {
-    // this.pedido.enderecoDeEntrega = {id: item.id};
-    // this.navCtrl.push('PaymentPage', {pedido: this.pedido});
+    this.order.deriveryAddress = {id: item.id};
+    this.navCtrl.push('PaymentPage', {order: this.order});
   }
 }

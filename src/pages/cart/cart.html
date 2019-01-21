@@ -32,6 +32,6 @@
     </ion-item>
 </ion-list>
 <button ion-button block (click)="goOn()">Keep Shopping</button>
-<button ion-button block color="secondary" (click)="checkout()">Finishing Order</button>
+<button ion-button block color="secondary" *ngIf="total() > 0" (click)="checkout()">Finishing Order</button>
 
 </ion-content>
