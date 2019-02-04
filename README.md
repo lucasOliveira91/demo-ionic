@@ -6,3 +6,6 @@ Adding new platform to run in browsers.
 
 Adding camera plugin
 - cordova plugin add cordova-plugin-camera --save
+
+Install native camera
+- npm install --save @ionic-native/camera
