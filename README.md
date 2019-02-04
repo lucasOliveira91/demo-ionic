@@ -9,3 +9,6 @@ Adding camera plugin
 
 Install native camera
 - npm install --save @ionic-native/camera
+
+To run the app with native features
+- ionic cordova run browser
