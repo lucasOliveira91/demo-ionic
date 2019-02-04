@@ -1,8 +1,6 @@
 import { ProductDTO } from './../../models/product.dto';
 import { Cart } from './../../models/cart';
 import { StorageService } from './../storage.service';
-import { CategoryDTO } from './../../models/categoria.dto';
-import { API_CONFIG } from './../../config/api.config';
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from 'rxjs/Rx';
