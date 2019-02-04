@@ -35,7 +35,7 @@ export class OrderConfirmationPage {
 
     this.custumerService.findById(this.order.custumer.id).subscribe(response =>{
       this.custumer = response as CustumerDTO;
-      this.address = this.findAddress(this.order.deriveryAddress.id, response['deliveryAddress']);
+      this.address = this.findAddress(this.order.deriveryAddress.id, response['addresses']);
     }, error => {
       this.navCtrl.setRoot('HomePage');
     });
