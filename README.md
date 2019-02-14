@@ -12,3 +12,7 @@ Install native camera
 
 To run the app with native features
 - ionic cordova run browser
+
+### Mobile
+To show your mobile screen in computer, use the "Vysor" a google chrome extension.
+
