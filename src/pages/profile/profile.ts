@@ -4,7 +4,7 @@ import { CustumerService } from './../../services/domain/custumer.service';
 import { StorageService } from './../../services/storage.service';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { CameraOptions, Camera, CameraOriginal, CameraPopoverOptions } from '@ionic-native/camera';
+import { CameraOptions, CameraOriginal } from '@ionic-native/camera';
 
 /**
  * Generated class for the ProfilePage page.
@@ -28,11 +28,15 @@ export class ProfilePage {
     public navParams: NavParams,
     public storageService: StorageService,
     public custumerService: CustumerService,
-    public camera: CameraOriginal
+    // public camera: CameraOriginal
   ) {
   }
 
   ionViewDidLoad() {
+    this.loadData();
+  }
+
+  loadData() {
     let localUser = this.storageService.getLocalUser();
 
     if(localUser && localUser.email) {
@@ -56,18 +60,30 @@ export class ProfilePage {
   }
 
   getCameraPicture() {
-    this.cameraOn = true;
-    const options: CameraOptions = {
-      quality: 100,
-      destinationType: this.camera.DestinationType.DATA_URL,
-      encodingType: this.camera.EncodingType.PNG,
-      mediaType: this.camera.MediaType.PICTURE
-    }
+    // this.cameraOn = true;
+    // const options: CameraOptions = {
+    //   quality: 100,
+    //   destinationType: this.camera.DestinationType.DATA_URL,
+    //   encodingType: this.camera.EncodingType.PNG,
+    //   mediaType: this.camera.MediaType.PICTURE
+    // }
 
-    this.camera.getPicture(options).then((imageData) => {
-      this.picture = 'data:image/png;base64,' +imageData;
-      this.cameraOn = false;
-    }, err => {});
+    // this.camera.getPicture(options).then((imageData) => {
+    //   this.picture = 'data:image/png;base64,' +imageData;
+    //   this.cameraOn = false;
+    // }, err => {});
   }
 
+  sendPicture() {
+    this.custumerService.uploadPicture(this.picture).subscribe(response => {
+      this.picture = null;
+      this.loadData();
+    }, erro => {
+
+    });
+  }
+
+  cancel() {
+    this.picture = null;
+  }
 }

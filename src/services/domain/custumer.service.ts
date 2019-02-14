@@ -1,3 +1,4 @@
+import { ImageUtilSerice } from './../image-uitl.service';
 import { API_CONFIG } from './../../config/api.config';
 import { CustumerDTO } from './../../models/custumer.dto';
 import { Observable } from 'rxjs/Rx';
@@ -7,7 +8,10 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class CustumerService{
 
-    constructor(public http: HttpClient) {}
+    constructor(
+        public http: HttpClient,
+        public imageUtilSerice: ImageUtilSerice
+    ) {}
 
     findById(id: string) {
         return this.http.get(`${API_CONFIG.baseUrl}/custumer/${id}`);
@@ -24,5 +28,13 @@ export class CustumerService{
 
     insert(obj: CustumerDTO) {
         return this.http.post(`${API_CONFIG.baseUrl}/custumer`, obj, {observe: 'response', responseType: 'text'});
+    }
+
+    uploadPicture(picture) {
+        let pictureBlob = this.imageUtilSerice.dataUriToBlob(picture);
+        let formData: FormData = new FormData();
+        formData.set('file', pictureBlob, 'file.png');
+
+        return this.http.post(`${API_CONFIG.baseUrl}/custumer/picture`, formData, {observe: 'response', responseType: 'text'});
     }
 }
