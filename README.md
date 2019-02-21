@@ -15,6 +15,8 @@ Install native camera
 
 To run the app with native features
 > ionic cordova run browser
+
+You can user the "Vysor" a google chrome plugin to degub in your android device
 > ionic cordova run android -device
 
 
